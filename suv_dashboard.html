@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Info Dashboard</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+      defer
+      src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key=AIzaSyAgypTMdeSB06OMxi-QdmwEakR4aVy5Mq4"
+      type="text/javascript"
+    ></script>
+    <link rel="stylesheet" media="screen" href="info.css" />
+  </head>
+  <!-- Body-->
+  <body style="background-color: #f7f7fc">
+    <main class="page-wrapper">
+      <div class="position-relative bg-gradient" style="height: 480px">
+        <div
+          class="shape shape-bottom shape-slant bg-secondary d-none d-lg-block"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 260">
+            <polygon
+              fill="currentColor"
+              points="0,257 0,260 3000,260 3000,0"
+            ></polygon>
+          </svg>
+        </div>
+      </div>
+
+      <div
+        class="container position-relative zindex-5 pb-4 mb-md-3"
+        style="margin-top: -350px"
+      >
+        <div class="row">
+          <!-- Sidebar-->
+          <div class="col-lg-4 mb-4 mb-lg-0">
+            <div class="bg-light rounded-3 shadow-lg">
+              <div class="px-4 py-4 mb-1 text-center">
+                <img
+                  class="d-block mx-auto my-2"
+                  src="suv.png"
+                  at="Amanda Wilson"
+                  width="110"
+                />
+                <h6 class="mb-0 pt-1">SUV</h6>
+                <span class="text-muted fs-sm">5 Seater</span>
+              </div>
+
+              <div class="d-lg-block pb-2" id="account-menu">
+                <h3
+                  class="
+                    d-block
+                    bg-secondary
+                    fs-sm
+                    fw-semibold
+                    text-muted
+                    mb-0
+                    px-4
+                    py-3
+                  "
+                >
+                  <img
+                    src="rupee.svg"
+                    width="20px"
+                    height="20px"
+                    class="fs-lg opacity-60 me-2"
+                  />Value for Money
+                </h3>
+                <a
+                  class="d-flex align-items-center nav-link-style px-4 py-3"
+                  href="#"
+                  ><img
+                    src="tracking.svg"
+                    width="20px"
+                    height="20px"
+                    class="fs-lg opacity-60 me-2"
+                  />Pickup<span
+                    class="text-muted fs-sm fw-normal ms-auto"
+                    id="from"
+                    >Banglore, Karnataka, India</span
+                  ></a
+                ><a
+                  class="
+                    d-flex
+                    align-items-center
+                    nav-link-style
+                    px-4
+                    py-3
+                    border-top
+                  "
+                  href="#"
+                  ><img
+                    src="arrival.svg"
+                    width="20px"
+                    height="20px"
+                    class="fs-lg opacity-60 me-2"
+                  />Drop<span class="text-muted fs-sm fw-normal ms-auto" id="to"
+                    >Bhubaneshwar, Orissa, India</span
+                  ></a
+                ><a
+                  class="
+                    d-flex
+                    align-items-center
+                    nav-link-style
+                    px-4
+                    py-3
+                    border-top
+                  "
+                  href="#"
+                  ><img
+                    src="play-round-button.svg"
+                    width="20px"
+                    height="20px"
+                    class="fs-lg opacity-60 me-2"
+                  />Leave On<span
+                    class="text-muted fs-sm fw-normal ms-auto"
+                    id="leave_date`"
+                    >Now</span
+                  ></a
+                ><a
+                  class="
+                    d-flex
+                    align-items-center
+                    nav-link-style
+                    px-4
+                    py-3
+                    border-top
+                  "
+                  href="#"
+                  ><img
+                    src="return.svg"
+                    width="20px"
+                    height="20px"
+                    class="fs-lg opacity-60 me-2"
+                  />Return By<span
+                    class="text-muted fs-sm fw-normal ms-auto"
+                    id="return_date"
+                    >18 May, 12:00 A.M.</span
+                  ></a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Content-->
+          <div class="col-lg-8">
+            <div
+              class="d-flex flex-column h-100 bg-light rounded-3 shadow-lg p-4"
+            >
+              <div class="pt-2 p-md-3">
+                <!-- Title-->
+                <h6 class="h6 mb-3 pb-2 text-center text-sm-start">
+                  <span id="time">1 Day 3 Hours</span> of journey about
+                  <span id="in_kilo">0</span> km.
+                </h6>
+                <!-- Stats-->
+                <div class="row mx-n2 py-2">
+                  <div class="col-md-12 col-sm-12 px-2 mb-3">
+                    <div class="bg-secondary h-100 rounded-3 p-4 text-center">
+                      <h3 class="fs-sm fw-medium text-body">Rs. 9/km</h3>
+                      <p class="h2 mb-2" id="estimated_fare">Rs. 28772</p>
+                      <p class="fs-ms text-muted mb-0">Estimated Fare</p>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 px-2 mb-3">
+                    <div class="bg-secondary h-100 rounded-3 p-4 text-center">
+                      <h3 class="fs-sm fw-medium text-body">Base Fare</h3>
+                      <p class="h2 mb-2">Rs. 1000</p>
+                      <p class="fs-ms text-muted mb-0"></p>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6 px-2 mb-3">
+                    <div class="bg-secondary h-100 rounded-3 p-4 text-center">
+                      <h3 class="fs-sm fw-medium text-body">
+                        Fare for remaining km
+                      </h3>
+                      <p class="h2 mb-2" id="without_GST_Fare">Rs. 23322</p>
+                      <p class="fs-ms text-muted mb-0">
+                        (charged only if travelled)
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-md-4 col-sm-12 px-2 mb-3">
+                    <div class="bg-secondary h-100 rounded-3 p-4 text-center">
+                      <h3 class="fs-sm fw-medium text-body">Taxes & Fees</h3>
+                      <p class="h2 mb-2" id="GST">Rs. 2932</p>
+                      <p class="fs-ms text-muted mb-0">
+                        Driver Allowance, Night time allowance & Booking Fee
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-sm-end">
+                  <a class="btn btn-primary" href="endform.html" data-bs-toggle="modal"
+                    >Book Now</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script>
+      // console.log(localStorage.getItem("distance"));
+      $("#in_kilo").text(localStorage.getItem("distance"));
+      $("#time").text(localStorage.getItem("time"));
+      $("#estimated_fare").text(localStorage.getItem("estimateFare"));
+      $("#GST").text(localStorage.getItem("GST"));
+      $("#without_GST_Fare").text(localStorage.getItem("withoutGSTFare"));
+      $("#from").text(localStorage.getItem("from"));
+      $("#to").text(localStorage.getItem("to"));
+      $("#date").text(localStorage.getItem("date"));
+      $("#leave_date").text(localStorage.getItem("leaveOnDate"));
+      $("#return_date").text(localStorage.getItem("returnDate"));
+    </script>
+  </body>
+</html>

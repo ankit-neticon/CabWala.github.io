@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Chalbo - Dashboard</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+      defer
+      src="https://maps.googleapis.com/maps/api/js?libraries=places&language=en&key=AIzaSyAgypTMdeSB06OMxi-QdmwEakR4aVy5Mq4"
+      type="text/javascript"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" media="screen" href="style.css" />
+  </head>
+
+  <!-- Body-->
+  <body>
+    <section
+      class="container position-relative zindex-5 mt-2 mt-md-5"
+      id="tickets"
+    >
+      <div class="row justify-content-center">
+        <div class="col-lg-10 col-md-11">
+          <div class="bg-gradient rounded-3 pt-5 px-4 pb-4 p-sm-5">
+            <div class="px-md-4">
+              <h2 class="text-light text-center pb-4">Choose your vehicle</h2>
+              <div
+                class="
+                  d-sm-flex
+                  justify-content-between
+                  align-items-center
+                  bg-light
+                  rounded-3
+                  px-3
+                  py-4
+                  p-sm-4
+                  mb-grid-gutter
+                  text-center text-sm-start
+                "
+              >
+                <img
+                  class="h6 mb-2 ml-0"
+                  src="hatchback.png"
+                  height="70px"
+                  width="70px"
+                />
+                <div class="me-sm-10 mb-4">
+                  <h3 class="h6 mb-2">Hatchback</h3>
+                  <p class="mb-0">
+                    Indica, Micra, Swift<br />All Equivalents Car Available
+                  </p>
+                </div>
+                <a class="btn btn-primary" href="#" id="hatchback_book_now"
+                  >Rs 10/km <i class="fa fa-arrow-right" aria-hidden="true"></i
+                ></a>
+              </div>
+              <div
+                class="
+                  d-sm-flex
+                  justify-content-between
+                  align-items-center
+                  bg-light
+                  rounded-3
+                  px-3
+                  py-4
+                  p-sm-4
+                  mb-grid-gutter
+                  text-center text-sm-start
+                "
+              >
+                <img
+                  class="h6 mb-2 ml-0"
+                  src="sedan.png"
+                  height="70px"
+                  width="70px"
+                />
+                <div class="me-sm-10 mb-4">
+                  <h3 class="h6 mb-2">Sedan</h3>
+                  <p class="mb-0">
+                    Amaze, Dezire, Swift<br />All Equivalent Car Available
+                  </p>
+                </div>
+                <a class="btn btn-primary" href="#" id="sedan_book_now"
+                  >Rs 10/km <i class="fa fa-arrow-right" aria-hidden="true"></i
+                ></a>
+              </div>
+              <div
+                class="
+                  d-sm-flex
+                  justify-content-between
+                  align-items-center
+                  bg-light
+                  rounded-3
+                  px-3
+                  py-4
+                  p-sm-4
+                  mb-grid-gutter
+                  text-center text-sm-start
+                "
+              >
+                <img
+                  class="h6 mb-2 ml-0"
+                  src="suv.png"
+                  height="70px"
+                  width="70px"
+                />
+                <div class="me-sm-10 mb-4">
+                  <h3 class="h6 mb-2">SUV</h3>
+                  <p class="mb-0">
+                    Scorpio, Bolero, Tavera<br />All Equivalents Car Available
+                  </p>
+                </div>
+                <a class="btn btn-primary" href="#" id="suv_book_now"
+                  >Rs 12/km <i class="fa fa-arrow-right" aria-hidden="true"></i
+                ></a>
+              </div>
+              <div
+                class="
+                  d-sm-flex
+                  justify-content-between
+                  align-items-center
+                  bg-light
+                  rounded-3
+                  px-3
+                  py-4
+                  p-sm-4
+                  mb-grid-gutter
+                  text-center text-sm-start
+                "
+              >
+                <img
+                  class="h6 mb-2 ml-0"
+                  src="muv.png"
+                  height="70px"
+                  width="70px"
+                />
+                <div class="me-sm-10 mb-4">
+                  <h3 class="h6 mb-2">MUV</h3>
+                  <p class="mb-0">
+                    Ertiga, Innova, Triber<br />All Equivalents Car Available
+                  </p>
+                </div>
+                <a class="btn btn-primary" href="#" id="muv_book_now"
+                  >Rs 13/km <i class="fa fa-arrow-right" aria-hidden="true"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      $(function () {
+        // calculate fare
+        function calculateFare(baseFare) {
+          var distance = Math.round(window.localStorage.getItem("distance"));
+          var withoutGSTFare = Math.round(baseFare + 9 * distance);
+          var calcGst = Math.round(withoutGSTFare + withoutGSTFare * 0.05);
+          var estimatedFare = Math.round(withoutGSTFare + calcGst);
+
+          window.localStorage.setItem("withoutGSTFare", withoutGSTFare);
+          window.localStorage.setItem("GST", calcGst);
+          window.localStorage.setItem("estimateFare", estimatedFare);
+        }
+
+        $("#hatchback_book_now").bind("click", function (e) {
+          e.preventDefault();
+          calculateFare(1000);
+          location.href = "hatchback_dashboard.html";
+        });
+        $("#sedan_book_now").bind("click", function (e) {
+          e.preventDefault();
+          calculateFare(1000);
+          location.href = "sedan_dashboard.html";
+        });
+        $("#suv_book_now").bind("click", function (e) {
+          e.preventDefault();
+          calculateFare(1300);
+          location.href = "suv_dashboard.html";
+        });
+        $("#muv_book_now").bind("click", function (e) {
+          e.preventDefault();
+          calculateFare(1500);
+          location.href = "muv_dashboard.html";
+        });
+      });
+    </script>
+  </body>
+</html>
+
+if (totalkm<300 || time ) {
+  withoutGSTFare = (1000 + (9.5*totalkm));
+  withoutGSTFare= withoutGSTFare+ withoutGSTFare*0.05;
+ 
+
+}
+
+else {
+  withoutGSTFare = 10*totalkm;
+  withoutGSTFare= withoutGSTFare+ withoutGSTFare*0.05;
+  
+}

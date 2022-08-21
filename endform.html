@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CabWala</title>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css" />
+  <link rel="stylesheet" href="endform.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="brand"><span>CabWala</span> booking service</h1>
+    <div class="wrapper">
+      <div class="company-info">
+        <h3>Cab taxi booking</h3>
+        <ul>
+          <li><i class="fa fa-road"></i>VARANASI</li>
+          <li><i class="fa fa-phone"></i> 6306317498</li>
+          <li><i class="fa fa-envelope"></i> CabWala.test</li>
+        </ul>
+      </div>
+      <div class="contact">
+        <h3>Book now</h3>
+        <div class="alert">thanks for booking from chalbo happy journey</div>
+        <form id="contactForm">
+          
+          <p>
+            <label>Name</label>
+            <input type="text" name="Name" id="name" placehloder="name" required>
+          </p>
+          <p>
+            <label>pickuplocation</label>
+            <input type="text" name="pickuplocation" id="pickuplocation" required>
+          </p>
+          <p>
+            <label>Email Address</label>
+            <input type="email" name="email" id="email" >
+          </p>
+          <p>
+            <label>Phone Number</label>
+            <input type="text" name="phone" id="phone"required>
+          </p>
+                  
+          <p class="full">
+            <label>Other Requirements*(charges apply)</label>
+            <textarea name="message" rows="5" id="message"></textarea>
+          </p>
+          <p class="full">
+            <button type="submit" id="submit" onclick="save()" >Book now</button>
+          </p>
+          <p class="full">
+            <button type="submit" id="submit" onclick="mail()" >send mailnow</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<!--<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-app.js"></script>     -->
+<!--<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>-->
+<!--<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-auth.js"></script>-->
+
+
+<script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-database.js"></script>
+<script src="main.js"></script>
+    <script 
+    type="text/javascript" 
+    src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+        <script type="text/javascript">
+        (function() {
+        emailjs.init("user_QLKhs3afVR3yTTrw2z0rN");
+        })();
+</script>
+</body>
+</html>
